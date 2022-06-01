@@ -17,7 +17,10 @@ jobs:
     - name: Build the Docker image
       run: | 
         echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+
         docker build . --file Dockerfile --tag reneh98/myapp:latest
+        
         GIT_SHA="$(git rev-parse --short HEAD)"
         docker tag reneh98/myapp:latest reneh98/myapp:$GIT_SHA
+        docker image push reneh98/myapp:latest
         docker image push reneh98/myapp:$GIT_SHA
