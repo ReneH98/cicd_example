@@ -22,6 +22,8 @@ jobs:
         image-ref: 'reneh98/myapp:latest'
         format: 'sarif'
         output: 'trivy-results.sarif'
+        exit-code: '0'
+        severity: 'CRITICAL,HIGH'
     
     - name: Run Trivy vulnerability scanner in IaC mode
       uses: aquasecurity/trivy-action@master
