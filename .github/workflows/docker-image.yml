@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-    - run: |
+      run: |
       echo "$REGISTRY_PASSWORD" | docker login --username $REGISTRY_USER --password-stdin
       docker build -f Dockerfile -t reneh98/demo:latest ./
       GIT_SHA="$(git rev-parse --short HEAD"
