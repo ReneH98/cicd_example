@@ -22,7 +22,7 @@ jobs:
         image-ref: 'reneh98/myapp:latest'
         format: 'sarif'
         output: 'trivy-results.sarif'
-        exit-code: '0'
+        exit-code: '1'
         severity: 'CRITICAL,HIGH'
     
     - name: Run Trivy vulnerability scanner in IaC mode
@@ -31,7 +31,7 @@ jobs:
         scan-type: 'config'
         hide-progress: false
         format: 'table'
-        exit-code: '0'
+        exit-code: '1'
         ignore-unfixed: true
         severity: 'CRITICAL,HIGH'
 
