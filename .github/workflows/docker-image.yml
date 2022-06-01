@@ -18,5 +18,7 @@ jobs:
       run: | 
         echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
 
-        docker build . --file Dockerfile --tag myapp:latest
+        docker build . --file Dockerfile --tag reneh98/myapp:latest
+        GIT_SHA="$(git rev-parse --short HEAD)"
+        docker tag reneh98/myapp:latest reeh98/myapp:$GIT_SHA
 
